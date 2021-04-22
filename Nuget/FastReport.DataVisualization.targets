@@ -1,4 +1,12 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets="_FR_DataVis_INIT">
+  
+  <Target Name="_FR_DataVis_INIT" Condition="$(_frDebug) != '' And $(_frDebug) == 'true'">
+    <Message Importance="high" Text="FastReport.DataVisualization initialize target"/>
+    <Message Importance="high" Text="TargetFramework: $(TargetFramework)"/>
+    <Message Importance="high" Text="_MicrosoftNetSdkWindowsDesktop: $(_MicrosoftNetSdkWindowsDesktop)"/>
+    <Message Importance="high" Text="UseWindowsForms: $(UseWindowsForms)"/>
+  </Target>
+
   <Choose>
     <When Condition="'$(TargetFrameworkIdentifier)'=='.NETCoreApp' And '$(TargetFrameworkVersion[1])'>='3'">
       <!-- <_MicrosoftNetSdkWindowsDesktop> property is declared in Microsoft.NET.Sdk.WindowsDesktop.props when using WindowsDesktop SDK  -->
@@ -10,10 +18,10 @@
         <UseWindowsForms>false</UseWindowsForms>
       </PropertyGroup>
       <ItemGroup Condition="(!$(_MicrosoftNetSdkWindowsDesktop) Or !$(UseWindowsForms)) And !('$(TargetFrameworkVersion[1])'>='5' And '$(TargetPlatformIdentifier)'=='Windows')">
-        <Reference Include="$(MSBuildThisFileDirectory)lib\netcoreapp3.0\FastReport.DataVisualization.dll" />
+        <Reference Include="$(MSBuildThisFileDirectory)lib\Any\FastReport.DataVisualization.dll" />
       </ItemGroup>
       <ItemGroup Condition="$(_MicrosoftNetSdkWindowsDesktop) And $(UseWindowsForms) And '$(TargetFrameworkVersion[1])'=='3'">
-        <Reference Include="$(MSBuildThisFileDirectory)lib\netcoreapp3.0-Win\FastReport.DataVisualization.dll" />
+        <Reference Include="$(MSBuildThisFileDirectory)lib\Win\FastReport.DataVisualization.dll" />
       </ItemGroup>
     </When>
   </Choose>
