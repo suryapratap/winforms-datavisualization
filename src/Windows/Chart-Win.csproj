@@ -31,9 +31,6 @@
   </ItemGroup>
 
   <Import Project="$(SlnDir)UsedPackages.version"/>
-  <ItemGroup Condition="'$(TargetFramework)'!='net40'">
-    <PackageReference Include="System.Data.SqlClient" Version="$(SystemDataSqlClientVersion)" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FastReport.Compat" 
