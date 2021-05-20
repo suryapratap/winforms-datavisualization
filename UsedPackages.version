@@ -4,8 +4,6 @@
     <PropertyGroup>
 
         <FRCompatVersion>2021.2.3</FRCompatVersion>
-
-        <SystemDrawingCommonVersion>[4.6.0,)</SystemDrawingCommonVersion>
 		
     </PropertyGroup>
 	

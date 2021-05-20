@@ -19,7 +19,6 @@
                       Condition="'$(DebugFRCompat)' != 'true'" />
     <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat\FastReport.Compat.csproj"
                       Condition="'$(DebugFRCompat)' == 'true'"/>
-    <PackageReference Include="System.Drawing.Common" Version="$(SystemDrawingCommonVersion)" />
   </ItemGroup>
 
 </Project>
