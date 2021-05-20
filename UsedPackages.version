@@ -7,8 +7,6 @@
 
         <SystemDrawingCommonVersion>[4.6.0,)</SystemDrawingCommonVersion>
 		
-        <SystemDataSqlClientVersion>4.4.3</SystemDataSqlClientVersion>
-
     </PropertyGroup>
 	
 </Project>

@@ -153,8 +153,6 @@ Task("DataVisualization")
     Information($"FRCompatVersion: {FRCompatVersion}");
     string SystemDrawingCommonVersion = XmlPeek(usedPackagesVersionPath, "//SystemDrawingCommonVersion/text()");
     Information($"System.Drawing.Common version: {SystemDrawingCommonVersion}");
-    string SystemDataSqlClientVersion = XmlPeek(usedPackagesVersionPath, "//SystemDataSqlClientVersion/text()");
-    Information($"System.Data.SqlClient version: {SystemDataSqlClientVersion}");
 
 
     var dependencies = new List<NuSpecDependency>();
@@ -163,7 +161,6 @@ Task("DataVisualization")
     // System.Drawing.Common reference doesn't included in net5.0-windows target
     AddNuSpecDep("System.Drawing.Common", SystemDrawingCommonVersion, ".NETStandard2.0");
     AddNuSpecDep("System.Drawing.Common", SystemDrawingCommonVersion, tfmCore30);
-    AddNuSpecDepCore("System.Data.SqlClient", SystemDataSqlClientVersion);
 
     var files = new[] {
        new NuSpecContent{Source = Path.Combine(nugetDir, "**", "*.*"), Target = ""},
