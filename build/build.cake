@@ -151,16 +151,10 @@ Task("DataVisualization")
     // Get used packages version
     string FRCompatVersion = XmlPeek(usedPackagesVersionPath, "//FRCompatVersion/text()");
     Information($"FRCompatVersion: {FRCompatVersion}");
-    string SystemDrawingCommonVersion = XmlPeek(usedPackagesVersionPath, "//SystemDrawingCommonVersion/text()");
-    Information($"System.Drawing.Common version: {SystemDrawingCommonVersion}");
-
 
     var dependencies = new List<NuSpecDependency>();
     AddNuSpecDep("FastReport.Compat", FRCompatVersion, tfmNet40);
     AddNuSpecDepCore("FastReport.Compat", FRCompatVersion);
-    // System.Drawing.Common reference doesn't included in net5.0-windows target
-    AddNuSpecDep("System.Drawing.Common", SystemDrawingCommonVersion, ".NETStandard2.0");
-    AddNuSpecDep("System.Drawing.Common", SystemDrawingCommonVersion, tfmCore30);
 
     var files = new[] {
        new NuSpecContent{Source = Path.Combine(nugetDir, "**", "*.*"), Target = ""},
