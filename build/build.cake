@@ -6,11 +6,16 @@ using Path = System.IO.Path;
 
 #region Constants
 
+const string Init = "Init";
 const string Prepare = "Prepare";
 const string PrepareNuget = "Prepare-Nuget";
 const string Default = "Default";
 
 #endregion
+
+bool IsDemo = false;
+bool IsRelease = true;
+bool IsDebug = false;
 
 #region Arguments
 
@@ -23,8 +28,21 @@ string outdir = Argument("out-dir", "");
 
 #endregion Arguments
 
+#region Init
+
+Task(Init)
+  .Does(() =>
+  {
+    IsDebug = config.ToLower() == "debug";
+    IsDemo = config.ToLower() == "demo";
+    IsRelease = config.ToLower() == "release";
+  });
+
+#endregion
+
 #region Prepare
 Task(Prepare)
+  .IsDependentOn(Init)
   .Does(() =>
   {
 
@@ -108,7 +126,7 @@ Task("DataVisualization")
     string solutionFile = System.IO.Path.Combine(solutionDirectory, solutionFilename);
     string usedPackagesVersionPath = Path.Combine(solutionDirectory, "UsedPackages.version");
 
-    string nugetDir = Path.Combine(solutionDirectory, "bin", "nuget");
+    string nugetDir = Path.Combine(solutionDirectory, "bin", IsRelease ? "nuget": config);
 
     // Clean nuget directory for package
     if (DirectoryExists(nugetDir))
@@ -142,7 +160,9 @@ Task("DataVisualization")
     var dependencies = new List<NuSpecDependency>();
     AddNuSpecDep("FastReport.Compat", FRCompatVersion, tfmNet40);
     AddNuSpecDepCore("FastReport.Compat", FRCompatVersion);
-    AddNuSpecDepCore("System.Drawing.Common", SystemDrawingCommonVersion);
+    // System.Drawing.Common reference doesn't included in net5.0-windows target
+    AddNuSpecDep("System.Drawing.Common", SystemDrawingCommonVersion, ".NETStandard2.0");
+    AddNuSpecDep("System.Drawing.Common", SystemDrawingCommonVersion, tfmCore30);
     AddNuSpecDepCore("System.Data.SqlClient", SystemDataSqlClientVersion);
 
     var files = new[] {
