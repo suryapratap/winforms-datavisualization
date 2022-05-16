@@ -16,7 +16,7 @@ namespace CakeScript
 
         string config = Argument("config", "Debug");
         string solutionDirectory = Argument("solution-directory", "");
-        readonly string solutionFilename = Argument("solution-filename", "FastReport.Compat.sln");
+        readonly string solutionFilename = Argument("solution-filename", "DataViz.sln");
         readonly string version = Argument("vers", "1.0.0.0");
         string outdir = Argument("out-dir", "");
 
