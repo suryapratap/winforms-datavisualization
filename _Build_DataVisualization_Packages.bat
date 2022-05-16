@@ -8,6 +8,6 @@ rem that's all
 
 ECHO NOW TRY TO BUILD FR.DataVisualization
 
-pushd .\build
-   Powershell -ExecutionPolicy ByPass -File ".\build.ps1" --target=DataVisualization --solution-filename=DataViz.sln --config=Release  --vers=2021.3.0
+pushd .\build\Cake
+   dotnet run --target=PackDataVis --solution-filename=DataViz.sln --config=Release --vers=2022.1.0
 popd

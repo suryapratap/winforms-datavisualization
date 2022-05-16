@@ -10,14 +10,14 @@
     <CLSCompliant>false</CLSCompliant>
     <NoWarn>$(NoWarn);618</NoWarn>
     <DefineConstants>$(DefineConstants);WINFORMS_CONTROL</DefineConstants>
-    <Copyright>Copyright © Fast Reports Inc 2021</Copyright>
+    <Copyright>Copyright © Fast Reports Inc 2022</Copyright>
     <Product>FastReport.Net</Product>
     <Company>Fast Reports Inc.</Company>
     <Description>Charting library</Description>
     <RootNamespace>FastReport.DataVisualization</RootNamespace>
     <RepositoryUrl>https://github.com/FastReports/winforms-datavisualization</RepositoryUrl>
     <PackageTags>Chart WinForms Windows Forms DataVisualization DataVisualisation Data Visualization Visualisation</PackageTags>
-    <PackageIcon>frlogo-big.png</PackageIcon>
+    <PackageIcon>frlogo192.png</PackageIcon>
     <RepositoryType>GIT</RepositoryType>
     <PackageLicenseFile>LICENSE.TXT</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -67,7 +67,7 @@
 
 
   <ItemGroup>
-    <None Include="$(SlnDir)frlogo-big.png">
+    <None Include="$(SlnDir)frlogo192.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

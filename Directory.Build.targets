@@ -3,16 +3,8 @@
 
   <Target Name="PrepareDataVisPackage">
 
-      <!-- Copy runtime libraries for .Net Core 3 -->
-    <Copy SourceFiles="$(BaseOutputPath)build\netcoreapp3.0\lib\Any\$(PackageId).dll"
-          DestinationFolder="$(BaseOutputPath)runtimes\any\lib\netcoreapp3.0"/>
-
-      <!-- Copy *.targets for nuget pack -->
-    <Copy SourceFiles="$(SlnDir)\Nuget\FastReport.DataVisualization.targets"
-          DestinationFolder="$(BaseOutputPath)\build\netcoreapp3.0"/>
-
       <!-- Copy resources for nuget pack -->
-    <Copy SourceFiles="$(SlnDir)\frlogo-big.png;$(SlnDir)\LICENSE.txt"
+    <Copy SourceFiles="$(SlnDir)\frlogo192.png;$(SlnDir)\LICENSE.txt"
           DestinationFolder="$(BaseOutputPath)"/>
 
     <Copy SourceFiles="$(SlnDir)\Nuget\_._"
