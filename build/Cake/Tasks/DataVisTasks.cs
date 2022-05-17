@@ -8,111 +8,215 @@ using Cake.Common.IO;
 using Cake.Common.Tools.DotNetCore.MSBuild;
 using Cake.Common.Tools.NuGet.Pack;
 
-namespace CakeScript
+namespace CakeScript;
+
+partial class Program
 {
-    partial class Program
+    [DependsOn(nameof(PrepareNuget))]
+    public void PackDataVis()
     {
-        [DependsOn(nameof(PrepareNuget))]
-        public void PackDataVis()
+        const string packageId = "FastReport.DataVisualization";
+        string solutionFile = Path.Combine(solutionDirectory, solutionFilename);
+        string usedPackagesVersionPath = Path.Combine(solutionDirectory, "UsedPackages.version");
+        string resourcesDir = Path.Combine(solutionDirectory, "Nuget");
+        string packCopyDir = Path.Combine(resourcesDir, packageId);
+
+        string nugetDir = Path.Combine(solutionDirectory, "bin", IsRelease ? "nuget" : config);
+
+        // Clean nuget directory for package
+        if (DirectoryExists(nugetDir))
         {
-            const string packageId = "FastReport.DataVisualization";
-            string solutionFile = Path.Combine(solutionDirectory, solutionFilename);
-            string usedPackagesVersionPath = Path.Combine(solutionDirectory, "UsedPackages.version");
-            string resourcesDir = Path.Combine(solutionDirectory, "Nuget");
-            string packCopyDir = Path.Combine(resourcesDir, packageId);
-
-            string nugetDir = Path.Combine(solutionDirectory, "bin", IsRelease ? "nuget" : config);
-
-            // Clean nuget directory for package
-            if (DirectoryExists(nugetDir))
+            DeleteDirectory(nugetDir, new DeleteDirectorySettings
             {
-                DeleteDirectory(nugetDir, new DeleteDirectorySettings
-                {
-                    Force = true,
-                    Recursive = true
-                });
-            }
+                Force = true,
+                Recursive = true
+            });
+        }
 
-            TargetBuildCore("Clean");
+        TargetBuildCore("Clean");
 
-            TargetBuildCore("Restore");
+        TargetBuildCore("Restore");
 
-            TargetBuildCore("Build");
+        TargetBuildCore("Build");
 
-            TargetBuildCore("PrepareDataVisPackage");
+        TargetBuildCore("PrepareDataVisPackage");
 
-            // Remove FastReport.Compat library
-            DeleteFiles(Path.Combine(nugetDir, "**", "FastReport.Compat.dll"));
+        string emptyFilePath = Path.Combine(nugetDir, "lib", "netcoreapp3.0", "_._");
+        Directory.GetParent(emptyFilePath).Create();
+        File.Create(emptyFilePath).Close();
 
-            // Get used packages version
-            string FRCompatVersion = XmlPeek(usedPackagesVersionPath, "//FRCompatVersion/text()");
-            Information($"FRCompatVersion: {FRCompatVersion}");
-
-            var dependencies = new List<NuSpecDependency>();
-            AddNuSpecDep("FastReport.Compat", FRCompatVersion, tfmNet40);
-            AddNuSpecDepCore("FastReport.Compat", FRCompatVersion);
-
-            var files = new[] {
-               new NuSpecContent{Source = Path.Combine(nugetDir, "**", "*.*"), Target = ""},
-               new NuSpecContent{Source = Path.Combine(packCopyDir, "**", "*.*"), Target = ""},
-            };
+        if (!File.Exists(emptyFilePath))
+            throw new Exception($"Empty file wasn't created. '{emptyFilePath}'");
 
 
-            var nuGetPackSettings = new NuGetPackSettings
-            {
-                Id = packageId,
-                Version = version,
-                Authors = new[] { "Fast Reports Inc." },
-                Owners = new[] { "Fast Reports Inc." },
-                Description = "Charting library",
-                Repository = new NuGetRepository { Type = "GIT", Url = "https://github.com/FastReports/winforms-datavisualization" },
-                ProjectUrl = new Uri("https://www.fast-report.com/en/product/fast-report-net"),
-                Icon = FRLOGO192PNG,
-                IconUrl = new Uri("https://raw.githubusercontent.com/FastReports/FastReport.Compat/master/frlogo-big.png"),
-                ReleaseNotes = new[] { "See the latest changes on https://github.com/FastReports/winforms-datavisualization" },
-                License = new NuSpecLicense { Type = "file", Value = "LICENSE.txt" },
-                Copyright = "Fast Reports Inc.",
-                Tags = new[] { "Chart", "WinForms", "Windows Forms DataVisualization", "DataVisualisation", "Data", "Visualization" },
-                RequireLicenseAcceptance = true,
-                Symbols = false,
-                NoPackageAnalysis = true,
-                Files = files,
-                Dependencies = dependencies,
-                BasePath = nugetDir,
-                OutputDirectory = outdir
-            };
+        // Remove FastReport.Compat library
+        DeleteFiles(Path.Combine(nugetDir, "**", "FastReport.Compat.*"));
 
-            // Pack
-            var template = Path.Combine(resourcesDir, nuGetPackSettings.Id + ".nuspec");
-            NuGetPack(template, nuGetPackSettings);
+        // Get used packages version
+        string FRCompatVersion = XmlPeek(usedPackagesVersionPath, "//FRCompatVersion/text()");
+        Information($"FRCompatVersion: {FRCompatVersion}");
+
+        var dependencies = new List<NuSpecDependency>();
+        AddNuSpecDep("FastReport.Compat", FRCompatVersion, tfmNet40);
+        AddNuSpecDepCore("FastReport.Compat", FRCompatVersion);
+
+        var files = new[] {
+           new NuSpecContent{Source = Path.Combine(nugetDir, "**", "*.*"), Target = ""},
+           new NuSpecContent{Source = Path.Combine(packCopyDir, "**", "*.*"), Target = ""},
+        };
 
 
-            // Local functions:
+        var nuGetPackSettings = new NuGetPackSettings
+        {
+            Id = packageId,
+            Version = version,
+            Authors = new[] { "Fast Reports Inc." },
+            Owners = new[] { "Fast Reports Inc." },
+            Description = "Charting library",
+            Repository = new NuGetRepository { Type = "GIT", Url = "https://github.com/FastReports/winforms-datavisualization" },
+            ProjectUrl = new Uri("https://www.fast-report.com/en/product/fast-report-net"),
+            Icon = FRLOGO192PNG,
+            IconUrl = new Uri("https://raw.githubusercontent.com/FastReports/FastReport.Compat/master/frlogo-big.png"),
+            ReleaseNotes = new[] { "See the latest changes on https://github.com/FastReports/winforms-datavisualization" },
+            License = new NuSpecLicense { Type = "file", Value = "LICENSE.txt" },
+            Copyright = "Fast Reports Inc.",
+            Tags = new[] { "Chart", "WinForms", "Windows Forms DataVisualization", "DataVisualisation", "Data", "Visualization" },
+            RequireLicenseAcceptance = true,
+            Symbols = false,
+            NoPackageAnalysis = true,
+            Files = files,
+            Dependencies = dependencies,
+            BasePath = nugetDir,
+            OutputDirectory = outdir
+        };
 
-            // For Net Standard 2.0, Core 3.0 and Net 5.0
-            void AddNuSpecDepCore(string id, string version)
-            {
-                AddNuSpecDep(id, version, tfmStandard20);
-                AddNuSpecDep(id, version, tfmCore30);
-                AddNuSpecDep(id, version, tfmNet5win7);
-            }
+        // Pack
+        var template = Path.Combine(resourcesDir, nuGetPackSettings.Id + ".nuspec");
+        NuGetPack(template, nuGetPackSettings);
 
-            void AddNuSpecDep(string id, string version, string tfm)
-            {
-                dependencies.Add(new NuSpecDependency { Id = id, Version = version, TargetFramework = tfm });
-            }
 
-            void TargetBuildCore(string target)
-            {
-                DotNetMSBuild(solutionFile, new DotNetCoreMSBuildSettings()
-                  .SetConfiguration(config)
-                  .WithTarget(target)
-                  .WithProperty("SolutionDir", solutionDirectory)
-                  .WithProperty("SolutionFileName", solutionFilename)
-                  .WithProperty("Version", version)
-                );
-            }
+        // Local functions:
 
+        // For Net Standard 2.0, Core 3.0 and Net 5.0
+        void AddNuSpecDepCore(string id, string version)
+        {
+            AddNuSpecDep(id, version, tfmStandard20);
+            AddNuSpecDep(id, version, tfmCore30);
+            AddNuSpecDep(id, version, tfmNet5win7);
+        }
+
+        void AddNuSpecDep(string id, string version, string tfm)
+        {
+            dependencies.Add(new NuSpecDependency { Id = id, Version = version, TargetFramework = tfm });
+        }
+
+        void TargetBuildCore(string target)
+        {
+            DotNetMSBuild(solutionFile, new DotNetCoreMSBuildSettings()
+              .SetConfiguration(config)
+              .WithTarget(target)
+              .WithProperty("SolutionDir", solutionDirectory)
+              .WithProperty("SolutionFileName", solutionFilename)
+              .WithProperty("Version", version)
+            );
         }
     }
+
+    [DependsOn(nameof(PrepareNuget))]
+    public void PackDataVisSkia()
+    {
+        const string compatSkia = "FastReport.Compat.Skia";
+        const string packageId = "FastReport.DataVisualization.Skia";
+        string solutionFile = Path.Combine(solutionDirectory, solutionFilename);
+        string usedPackagesVersionPath = Path.Combine(solutionDirectory, "UsedPackages.version");
+
+        string nugetDir = Path.Combine(solutionDirectory, "bin", IsRelease ? "nuget" : config);
+
+        // Clean nuget directory for package
+        if (DirectoryExists(nugetDir))
+        {
+            DeleteDirectory(nugetDir, new DeleteDirectorySettings
+            {
+                Force = true,
+                Recursive = true
+            });
+        }
+
+        TargetBuildCore("Clean");
+
+        TargetBuildCore("Restore");
+
+        TargetBuildCore("Build");
+
+        TargetBuildCore("PrepareDataVisPackage");
+
+        // Remove FastReport.Compat library
+        DeleteFiles(Path.Combine(nugetDir, "**", compatSkia + ".*"));
+
+        // Get used packages version
+        string FRCompatSkiaVersion = XmlPeek(usedPackagesVersionPath, "//FRCompatSkiaVersion/text()");
+        Information($"FRCompatSkiaVersion: {FRCompatSkiaVersion}");
+
+        var dependencies = new List<NuSpecDependency>();
+        AddNuSpecDepCore(compatSkia, FRCompatSkiaVersion);
+
+        var files = new[] {
+           new NuSpecContent{Source = Path.Combine(nugetDir, "**", "*.*"), Target = ""},
+        };
+
+
+        var nuGetPackSettings = new NuGetPackSettings
+        {
+            Id = packageId,
+            Version = version,
+            Authors = new[] { "Fast Reports Inc." },
+            Owners = new[] { "Fast Reports Inc." },
+            Description = "Charting library",
+            Repository = new NuGetRepository { Type = "GIT", Url = "https://github.com/FastReports/winforms-datavisualization" },
+            ProjectUrl = new Uri("https://www.fast-report.com/en/product/fast-report-net"),
+            Icon = FRLOGO192PNG,
+            IconUrl = new Uri("https://raw.githubusercontent.com/FastReports/FastReport.Compat/master/frlogo-big.png"),
+            ReleaseNotes = new[] { "See the latest changes on https://github.com/FastReports/winforms-datavisualization" },
+            License = new NuSpecLicense { Type = "file", Value = "LICENSE.txt" },
+            Copyright = "Fast Reports Inc.",
+            Tags = new[] { "Chart", "WinForms", "Windows Forms DataVisualization", "DataVisualisation", "Data", "Visualization" },
+            RequireLicenseAcceptance = true,
+            Symbols = false,
+            NoPackageAnalysis = true,
+            Files = files,
+            Dependencies = dependencies,
+            BasePath = nugetDir,
+            OutputDirectory = outdir
+        };
+
+        // Pack
+        NuGetPack(nuGetPackSettings);
+
+
+        // Local functions:
+
+        // For Net Standard 2.0, Core 3.0
+        void AddNuSpecDepCore(string id, string version)
+        {
+            AddNuSpecDep(id, version, tfmStandard20);
+            AddNuSpecDep(id, version, tfmCore30);
+        }
+
+        void AddNuSpecDep(string id, string version, string tfm)
+        {
+            dependencies.Add(new NuSpecDependency { Id = id, Version = version, TargetFramework = tfm });
+        }
+
+        void TargetBuildCore(string target)
+        {
+            DotNetMSBuild(solutionFile, new DotNetCoreMSBuildSettings()
+              .SetConfiguration(config)
+              .WithTarget(target)
+              .WithProperty("SolutionDir", solutionDirectory)
+              .WithProperty("SolutionFileName", solutionFilename)
+              .WithProperty("Version", version)
+            );
+        }
+    }
+
 }

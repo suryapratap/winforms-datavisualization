@@ -6,9 +6,6 @@
       <!-- Copy resources for nuget pack -->
     <Copy SourceFiles="$(SlnDir)\frlogo192.png;$(SlnDir)\LICENSE.txt"
           DestinationFolder="$(BaseOutputPath)"/>
-
-    <Copy SourceFiles="$(SlnDir)\Nuget\_._"
-          DestinationFolder="$(BaseOutputPath)\lib\netcoreapp3.0"/>
   </Target>
 
 </Project>
