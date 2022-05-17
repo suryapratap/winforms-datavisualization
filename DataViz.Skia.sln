@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28531.58
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8B60E1B8-479C-4AE1-B0FB-55189DD3B9DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Any", "Any", "{65FA50A9-3FD0-4BB4-BBFB-9B4F60CF2439}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chart", "src\Any\Chart.Skia.csproj", "{9CB3A25C-628B-4AFE-AC51-F49617E6C8FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CB3A25C-628B-4AFE-AC51-F49617E6C8FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB3A25C-628B-4AFE-AC51-F49617E6C8FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB3A25C-628B-4AFE-AC51-F49617E6C8FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB3A25C-628B-4AFE-AC51-F49617E6C8FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{65FA50A9-3FD0-4BB4-BBFB-9B4F60CF2439} = {8B60E1B8-479C-4AE1-B0FB-55189DD3B9DF}
+		{9CB3A25C-628B-4AFE-AC51-F49617E6C8FE} = {65FA50A9-3FD0-4BB4-BBFB-9B4F60CF2439}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9197CCA8-9853-4465-BBEC-C5FA3BB7008E}
+	EndGlobalSection
+EndGlobal

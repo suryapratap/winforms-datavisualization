@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
+
+    <AssemblyName>FastReport.DataVisualization.Skia</AssemblyName>
+    <PackageId>$(AssemblyName)</PackageId>
+    <DefineConstants>$(DefineConstants);SKIA;</DefineConstants>
+
+    <DebugFRCompat>false</DebugFRCompat>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>$(BaseOutputPath)\lib</OutputPath>
+  </PropertyGroup>
+
+  <Import Project="$(SlnDir)UsedPackages.version"/>
+  <ItemGroup>
+    <PackageReference Include="FastReport.Compat.Skia"
+                      Version="$(FRCompatSkiaVersion)"
+                      Condition="!$(DebugFRCompat)" />
+    <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat\FastReport.Compat.Skia.csproj"
+                      Condition="$(DebugFRCompat)"/>
+  </ItemGroup>
+
+</Project>

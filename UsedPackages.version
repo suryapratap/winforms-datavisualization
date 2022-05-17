@@ -5,6 +5,8 @@
 
         <FRCompatVersion>2022.1.0-rc2</FRCompatVersion>
 		
+        <FRCompatSkiaVersion>2022.2.0-dev</FRCompatSkiaVersion>
+
     </PropertyGroup>
 	
 </Project>
