@@ -5,7 +5,7 @@
 
         <FRCompatVersion>2022.1.0-rc2</FRCompatVersion>
 		
-        <FRCompatSkiaVersion>2022.2.1-dev</FRCompatSkiaVersion>
+        <FRCompatSkiaVersion>2022.2.11-dev</FRCompatSkiaVersion>
 
     </PropertyGroup>
 	
