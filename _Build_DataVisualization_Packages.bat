@@ -10,5 +10,5 @@ ECHO NOW TRY TO BUILD FR.DataVisualization
 
 pushd .\build\Cake
    dotnet run --target=PackDataVis --solution-filename=DataViz.sln --config=Release --vers=2022.2.0
-   dotnet run --target=PackDataVisSkia --solution-filename=DataViz.Skia.sln --config=Release --vers=2022.2.0
+   dotnet run --target=PackDataVisSkia --solution-filename=DataViz.sln --config=Release --vers=2022.2.0
 popd

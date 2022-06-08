@@ -30,7 +30,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
-  <Import Project="$(SlnDir)UsedPackages.version"/>
+  <Import Project="$(SlnDir)\UsedPackages.version"/>
 
   <ItemGroup>
     <PackageReference Include="FastReport.Compat" 

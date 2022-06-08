@@ -10,11 +10,7 @@
     <DebugFRCompat>false</DebugFRCompat>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <OutputPath>$(BaseOutputPath)\lib</OutputPath>
-  </PropertyGroup>
-
-  <Import Project="$(SlnDir)UsedPackages.version"/>
+  <Import Project="$(SlnDir)\UsedPackages.version"/>
   <ItemGroup>
     <PackageReference Include="FastReport.Compat.Skia"
                       Version="$(FRCompatSkiaVersion)"
