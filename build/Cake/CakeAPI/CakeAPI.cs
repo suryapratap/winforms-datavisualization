@@ -29,7 +29,7 @@ using Cake.Common.Tools.DotNet;
 using Cake.Common.Tools.DotNet.MSBuild;
 using Cake.Common.Tools.NuGet.Restore;
 using Cake.Core.Annotations;
-
+using Cake.Common.Tools.DotNet.Build;
 
 namespace CakeScript;
 
@@ -45,7 +45,7 @@ static class CakeAPI
         var fileSystem = new FileSystem();
 
         var verbosity = Verbosity.Normal;
-        if(Startup.HasArgument("cake-verbosity"))
+        if (Startup.HasArgument("cake-verbosity"))
         {
             verbosity = Enum.Parse<Verbosity>(Startup.Argument("cake-verbosity"));
         }
@@ -79,6 +79,9 @@ static class CakeAPI
 
     public static void DotNetPack(string project, DotNetPackSettings packSettings)
         => Context.DotNetPack(project, packSettings);
+
+    public static void DotNetBuild(string project, DotNetBuildSettings settings)
+        => Context.DotNetBuild(project, settings);
 
     public static void DotNetMSBuild(string projectOrDirectory, DotNetMSBuildSettings settings)
         => Context.DotNetMSBuild(projectOrDirectory, settings);
