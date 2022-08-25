@@ -537,6 +537,7 @@ namespace FastReport.DataVisualization.Charting
 			get
 			{
 				return this._tooltip;
+                CallOnModifing();
 			}
 		}
 
@@ -563,7 +564,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_image = value;
 				Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -590,7 +592,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_imageTransparentColor = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 
@@ -615,7 +618,8 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
 				base.Name = value;
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -641,7 +645,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_gridTick = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -664,7 +669,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_fromPosition = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -687,7 +693,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_toPosition = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -709,7 +716,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_text = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -736,7 +744,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_foreColor = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -763,7 +772,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_markColor = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -790,7 +800,8 @@ namespace FastReport.DataVisualization.Charting
 
 				this._labelRowIndex = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -812,7 +823,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_labelMark = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		#endregion
@@ -2333,6 +2345,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 intervalOffset = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -2371,6 +2384,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 intervalOffsetType = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -2415,6 +2429,7 @@ namespace FastReport.DataVisualization.Charting
                 }
 
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -2459,6 +2474,7 @@ namespace FastReport.DataVisualization.Charting
                 }
 
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -2504,7 +2520,8 @@ namespace FastReport.DataVisualization.Charting
 
 				_font = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2531,7 +2548,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_foreColor = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2574,7 +2592,8 @@ namespace FastReport.DataVisualization.Charting
 
 				angle = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2613,7 +2632,8 @@ namespace FastReport.DataVisualization.Charting
 				isStaggered = value;
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2635,7 +2655,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_isEndLabelVisible = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2657,7 +2678,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_truncatedLabels = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2679,7 +2701,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_format = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2701,7 +2724,8 @@ namespace FastReport.DataVisualization.Charting
 			{
                 _enabled = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 		#endregion
 

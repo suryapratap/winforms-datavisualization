@@ -200,7 +200,9 @@ namespace FastReport.DataVisualization.Charting
 					{
 						axis.Invalidate();
 					}
-				}
+
+                    axis.CallOnModifing();
+                }
 			}
 		}
 
@@ -259,7 +261,9 @@ namespace FastReport.DataVisualization.Charting
 					{
 						axis.Invalidate();
 					}
-				}
+
+                    axis.CallOnModifing();
+                }
 			}
 		}
 
@@ -302,6 +306,11 @@ namespace FastReport.DataVisualization.Charting
 					{
 						axis.Invalidate();
 					}
+
+                    if(axis != null)
+                    {
+                        axis.CallOnModifing();
+                    }
 				}
 			}
 		}
@@ -347,7 +356,12 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
 				_minSize = value;
-			}
+
+                if (axis != null)
+                {
+                    axis.CallOnModifing();
+                }
+            }
 		}
 
 		/// <summary>
@@ -368,7 +382,12 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
 				_minSizeType = (value != DateTimeIntervalType.NotSet) ? value : DateTimeIntervalType.Auto;
-			}
+
+                if (axis != null)
+                {
+                    axis.CallOnModifing();
+                }
+            }
 		}
 
 		/// <summary>
@@ -391,7 +410,12 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
 				_zoomable = value;
-			}
+
+                if (axis != null)
+                {
+                    axis.CallOnModifing();
+                }
+            }
 		}
 
 		/// <summary>
@@ -422,7 +446,12 @@ namespace FastReport.DataVisualization.Charting
 					{
 						axis.Invalidate();
 					}
-				}
+
+                    if (axis != null)
+                    {
+                        axis.CallOnModifing();
+                    }
+                }
 			}
 		}
 
@@ -453,7 +482,12 @@ namespace FastReport.DataVisualization.Charting
 					{
 						axis.Invalidate();
 					}
-				}
+
+                    if (axis != null)
+                    {
+                        axis.CallOnModifing();
+                    }
+                }
 			}
 		}
 
@@ -487,7 +521,12 @@ namespace FastReport.DataVisualization.Charting
 					{
 						axis.Invalidate();
 					}
-				}
+
+                    if (axis != null)
+                    {
+                        axis.CallOnModifing();
+                    }
+                }
 			}
 		}
 
@@ -520,7 +559,12 @@ namespace FastReport.DataVisualization.Charting
 					{
 						axis.Invalidate();
 					}
-				}
+
+                    if (axis != null)
+                    {
+                        axis.CallOnModifing();
+                    }
+                }
 			}
 		}
 

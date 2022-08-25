@@ -184,6 +184,9 @@ namespace FastReport.DataVisualization.Charting
             item.Parent = this;
             base.InsertItem(index, item);
             Invalidate();
+
+            if(Chart != null)
+                Chart.CallOnModifing(this);
         }
 
         /// <summary>
@@ -313,6 +316,7 @@ namespace FastReport.DataVisualization.Charting
                     
             }
         }
+
         #endregion
 
         #region Constructors

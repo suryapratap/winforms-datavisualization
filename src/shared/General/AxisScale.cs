@@ -251,7 +251,7 @@ namespace FastReport.DataVisualization.Charting
 
 #endif // SUBAXES
                 this.Invalidate();
-			}
+            }
 		}
 
 
@@ -275,7 +275,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				this._intervalAutoMode = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 
@@ -302,7 +303,7 @@ namespace FastReport.DataVisualization.Charting
 			{
 				isReversed = value;
 				this.Invalidate();
-			}
+            }
 		}
 
 		/// <summary>
@@ -328,7 +329,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				isStartedFromZero = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -360,7 +362,8 @@ namespace FastReport.DataVisualization.Charting
 					margin = 0;
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -404,7 +407,7 @@ namespace FastReport.DataVisualization.Charting
                 _internalIntervalType = value;
 
 				this.Invalidate();
-			}
+            }
 		}
 
 		/// <summary>
@@ -517,7 +520,8 @@ namespace FastReport.DataVisualization.Charting
 				((Axis)this).tempAutoMaximum = _autoMaximum;
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -568,7 +572,8 @@ namespace FastReport.DataVisualization.Charting
 				((Axis)this).tempAutoMinimum = _autoMinimum;
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -602,7 +607,8 @@ namespace FastReport.DataVisualization.Charting
 				((Axis)this).tempCrossing = crossing;
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 	
@@ -652,7 +658,8 @@ namespace FastReport.DataVisualization.Charting
 				}
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -676,7 +683,8 @@ namespace FastReport.DataVisualization.Charting
 			{
                 _isLogarithmic = value;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -706,7 +714,8 @@ namespace FastReport.DataVisualization.Charting
 				logarithmBase = value;
 				
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		#endregion
@@ -738,8 +747,9 @@ namespace FastReport.DataVisualization.Charting
 			{
 				this.axisScaleBreakStyle = value;
 				this.axisScaleBreakStyle.axis = (Axis)this;
-				//this.Invalidate();
-			}
+                //this.Invalidate();
+                CallOnModifing();
+            }
 		}
 
 		// Field that stores axis scale segments
@@ -792,7 +802,8 @@ namespace FastReport.DataVisualization.Charting
 				_scaleView = value;
 				_scaleView.axis = (Axis)this;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -816,7 +827,8 @@ namespace FastReport.DataVisualization.Charting
 				scrollBar = value;
 				scrollBar.axis = (Axis)this;
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>

@@ -123,6 +123,12 @@ namespace FastReport.DataVisualization.Charting
                 _parent.Invalidate();
         }
 
+
+        public void CallOnModifing()
+        {
+            Chart?.CallOnModifing(this);
+        }
+
         #endregion
 
         #region IChartElement Members
@@ -332,11 +338,9 @@ namespace FastReport.DataVisualization.Charting
             string typeName = GetType().Name;
             return (string.IsNullOrEmpty(_name)) ? typeName : typeName + '-' + _name;
         }
-        
         #endregion
 
     }
-
 
     /// <summary>
     /// NameReferenceChanged events help chart maintain referencial integrity.

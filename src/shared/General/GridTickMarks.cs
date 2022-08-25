@@ -978,7 +978,9 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_style = value;
 				this.Invalidate();
-			}
+                if(Axis != null)
+                    Axis.CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1000,7 +1002,9 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_size = value;
 				this.Invalidate();
-			}
+                if (Axis != null)
+                    Axis.CallOnModifing();
+            }
 		}
 
 		#endregion
@@ -1589,6 +1593,8 @@ namespace FastReport.DataVisualization.Charting
                 intervalOffset = value;
                 intervalOffsetChanged = true;
                 this.Invalidate();
+                if (Axis != null)
+                    Axis.CallOnModifing();
             }
         }
 
@@ -1736,6 +1742,8 @@ namespace FastReport.DataVisualization.Charting
                 }
 
                 this.Invalidate();
+                if (Axis != null)
+                    Axis.CallOnModifing();
             }
 
         }
@@ -1800,6 +1808,8 @@ namespace FastReport.DataVisualization.Charting
                 }
 
                 this.Invalidate();
+                if (Axis != null)
+                    Axis.CallOnModifing();
             }
         }
 
@@ -1854,7 +1864,9 @@ namespace FastReport.DataVisualization.Charting
 			{
 				borderColor = value;
 				this.Invalidate();
-			}
+                if (Axis != null)
+                    Axis.CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1876,7 +1888,9 @@ namespace FastReport.DataVisualization.Charting
 			{
 				borderDashStyle = value;
 				this.Invalidate();
-			}
+                if (Axis != null)
+                    Axis.CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1898,7 +1912,9 @@ namespace FastReport.DataVisualization.Charting
 			{
 				borderWidth = value;
 				this.Invalidate();
-			}
+                if (Axis != null)
+                    Axis.CallOnModifing();
+            }
 		}
 		
 		/// <summary>
@@ -1931,7 +1947,9 @@ namespace FastReport.DataVisualization.Charting
 				enabled = value;
 				enabledChanged = true;
 				this.Invalidate();
-			}
+                if (Axis != null)
+                    Axis.CallOnModifing();
+            }
 		}
 
         /// <summary>

@@ -2607,7 +2607,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_xValue = value;
 				this.Invalidate(false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2647,7 +2648,8 @@ namespace FastReport.DataVisualization.Charting
 					_yValue = value;
 				}
 				this.Invalidate(false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2670,7 +2672,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				base.isEmptyPoint = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3126,7 +3129,8 @@ namespace FastReport.DataVisualization.Charting
 			{
                 properties[name] = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3183,7 +3187,8 @@ namespace FastReport.DataVisualization.Charting
                     series.label = value;
 
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3247,7 +3252,8 @@ namespace FastReport.DataVisualization.Charting
 				}
 
 				this.Invalidate(false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3301,7 +3307,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.labelFormat = value;
 				this.Invalidate(false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3350,7 +3357,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.showLabelAsValue = value;
 				this.Invalidate(false);
-			}
+                CallOnModifing();
+            }
 		}		
 
 		/// <summary>
@@ -3410,7 +3418,7 @@ namespace FastReport.DataVisualization.Charting
 					else
 						series.color = value;
 					this.Invalidate(true);
-				}
+                }
 			}
 		}
 
@@ -3462,7 +3470,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.borderColor = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3510,7 +3519,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.borderDashStyle = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3562,7 +3572,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.borderWidth = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 		
 		/// <summary>
@@ -3619,7 +3630,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.backImage = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
         /// <summary>
@@ -3670,7 +3682,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.backImageWrapMode = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
         /// <summary>
@@ -3726,7 +3739,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.backImageTransparentColor = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3775,7 +3789,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.backImageAlignment = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
         /// <summary>
@@ -3826,7 +3841,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.backGradientStyle = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
         /// <summary>
@@ -3878,7 +3894,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.backSecondaryColor = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
         /// <summary>
@@ -3929,7 +3946,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.backHatchStyle = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -3977,6 +3995,7 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.font = value;
 				this.Invalidate(false);
+                CallOnModifing();
 			}
 		}
 
@@ -4034,7 +4053,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.fontColor = value;
 				this.Invalidate(false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -4086,7 +4106,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.fontAngle = value;
 				this.Invalidate(false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -4144,7 +4165,8 @@ namespace FastReport.DataVisualization.Charting
                     thisSeries.tempMarkerStyleIsSet = false;
 				}
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -4193,7 +4215,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.markerSize = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -4251,7 +4274,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.markerImage = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -4304,7 +4328,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.markerImageTransparentColor = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 		
 		/// <summary>
@@ -4357,7 +4382,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.markerColor = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 		
 		/// <summary>
@@ -4410,7 +4436,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.markerBorderColor = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 
@@ -4465,7 +4492,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.markerBorderWidth = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 
@@ -4493,7 +4521,8 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
 				customProperties = value;
-			}
+                CallOnModifing();
+            }
 			get
 			{
 				return customProperties;
@@ -4738,7 +4767,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.showInLegend = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}		
 
 		/// <summary>
@@ -4761,7 +4791,8 @@ namespace FastReport.DataVisualization.Charting
 				else 
 					series.legendText = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 			get
 			{
 				if(this.pointCustomProperties)
@@ -4815,7 +4846,8 @@ namespace FastReport.DataVisualization.Charting
 				{
 					Chart.selection.enabledChecked = false;
 				}
-			}
+                CallOnModifing();
+            }
 			get
 			{
 				if(this.pointCustomProperties)
@@ -4901,7 +4933,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.labelBackColor = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -4957,7 +4990,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.labelBorderColor = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -5005,7 +5039,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.labelBorderDashStyle = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
         /// <summary>
@@ -5057,7 +5092,8 @@ namespace FastReport.DataVisualization.Charting
 				else
 					series.labelBorderWidth = value;
 				this.Invalidate(true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -5084,7 +5120,8 @@ namespace FastReport.DataVisualization.Charting
 				{
 					Chart.selection.enabledChecked = false;
 				}
-			}
+                CallOnModifing();
+            }
 			get
 			{
 				if(this.pointCustomProperties)
