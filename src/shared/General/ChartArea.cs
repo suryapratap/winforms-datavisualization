@@ -213,6 +213,7 @@ namespace FastReport.DataVisualization.Charting
 
                 // Initialize chart object
                 _cursorX.Initialize(this, AxisName.X);
+                CallOnModifing();
             }
         }
 
@@ -239,6 +240,7 @@ namespace FastReport.DataVisualization.Charting
 
                 // Initialize chart object
                 _cursorY.Initialize(this, AxisName.Y);
+                CallOnModifing();
             }
         }
 
@@ -272,6 +274,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _visible = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -308,6 +311,7 @@ namespace FastReport.DataVisualization.Charting
                         _alignWithChartArea = value;
                     }
                     Invalidate();
+                    CallOnModifing();
                 }
             }
         }
@@ -334,6 +338,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _alignmentOrientation = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -360,6 +365,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _alignmentStyle = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -391,6 +397,7 @@ namespace FastReport.DataVisualization.Charting
                 AxisX2 = value[2];
                 AxisY2 = value[3];
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -546,6 +553,7 @@ namespace FastReport.DataVisualization.Charting
                 _areaPosition.Parent = this;
                 _areaPosition.resetAreaAutoPosition = true;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -596,6 +604,7 @@ namespace FastReport.DataVisualization.Charting
                 _innerPlotPosition = value;
                 _innerPlotPosition.Parent = this;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -640,6 +649,7 @@ namespace FastReport.DataVisualization.Charting
                 _backColorIsSet = true;
 
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -668,6 +678,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _backHatchStyle = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -694,6 +705,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _backImage = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -717,6 +729,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _backImageWrapMode = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -744,6 +757,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _backImageTransparentColor = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -767,6 +781,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _backImageAlignment = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -795,6 +810,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _backGradientStyle = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -823,6 +839,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _backSecondaryColor = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -850,6 +867,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _shadowColor = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -873,6 +891,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _shadowOffset = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -901,6 +920,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _borderColor = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -929,6 +949,7 @@ namespace FastReport.DataVisualization.Charting
                 }
                 _borderWidth = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -953,6 +974,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 _borderDashStyle = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -975,6 +997,7 @@ namespace FastReport.DataVisualization.Charting
             set
             {
                 base.Name = value;
+                CallOnModifing();
             }
         }
 
@@ -999,9 +1022,9 @@ namespace FastReport.DataVisualization.Charting
             {
                 _isSameFontSizeForAllAxes = value;
                 Invalidate();
+                CallOnModifing();
             }
         }
-
 
         #endregion
 

@@ -95,7 +95,8 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
 				_name = value;
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -114,7 +115,8 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
                 _image = value;
-			}
+                CallOnModifing();
+            }
 		}
 
 		#endregion

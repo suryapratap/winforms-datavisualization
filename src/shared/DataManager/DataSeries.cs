@@ -1668,7 +1668,8 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
                 base.Name = value;
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1704,8 +1705,8 @@ namespace FastReport.DataVisualization.Charting
 				{
                     this.Common.ChartPicture.boundToDataSource = false;
 				}
-
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1744,8 +1745,8 @@ namespace FastReport.DataVisualization.Charting
 				{
                     this.Common.ChartPicture.boundToDataSource = false;
 				}
-
-			}
+                CallOnModifing();
+            }
 		}
 
 
@@ -1775,6 +1776,7 @@ namespace FastReport.DataVisualization.Charting
                     }
                     _legend = value;
                     this.Invalidate(false, true);
+                    CallOnModifing();
                 }
 			}
 		}
@@ -1799,7 +1801,8 @@ namespace FastReport.DataVisualization.Charting
 				_xValueType = value;
 				this.autoXValueType = false;
 				this.Invalidate(true, false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1821,7 +1824,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_isXValueIndexed = value;
 				this.Invalidate(true, false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1845,7 +1849,8 @@ namespace FastReport.DataVisualization.Charting
 				_yValueType = value;
 				this.autoYValueType = false;
 				this.Invalidate(true, false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1908,7 +1913,8 @@ namespace FastReport.DataVisualization.Charting
 		
 				_yValuesPerPoint = value;
 				this.Invalidate(true, false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1958,7 +1964,8 @@ namespace FastReport.DataVisualization.Charting
                 _emptyPointCustomProperties.pointCustomProperties = true;
                 _emptyPointCustomProperties.Parent = this;
 				this.Invalidate(true, false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -1983,7 +1990,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_colorPalette = value;
 				this.Invalidate(true, true);
-			}
+                CallOnModifing();
+            }
 		}
 
         /// <summary>
@@ -2009,7 +2017,8 @@ namespace FastReport.DataVisualization.Charting
 				}
 				_markersStep = value;
 				this.Invalidate(true, false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2032,7 +2041,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_shadowOffset = value;
 				this.Invalidate(true, true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2054,7 +2064,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_shadowColor = value;
 				this.Invalidate(true, true);
-			}
+                CallOnModifing();
+            }
 		}
 
 
@@ -2168,7 +2179,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_xAxisType = value;
 				this.Invalidate(true, false);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2190,7 +2202,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_yAxisType = value;
 				this.Invalidate(true, false);
-			}
+                CallOnModifing();
+            }
 		}
 		
 		/// <summary>
@@ -2214,7 +2227,8 @@ namespace FastReport.DataVisualization.Charting
 			{
 				_enabled = value;
 				this.Invalidate(true, true);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2263,7 +2277,8 @@ namespace FastReport.DataVisualization.Charting
 			set
 			{
 				this.ChartTypeName = Series.GetChartTypeName(value);
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -2328,7 +2343,7 @@ namespace FastReport.DataVisualization.Charting
 				_chartType = value;
 
 				this.Invalidate(false, true);
-			}
+            }
 		}
 
 
@@ -2358,6 +2373,7 @@ namespace FastReport.DataVisualization.Charting
                     }
                     _chartArea = value;
                     this.Invalidate(false, true);
+                    CallOnModifing();
                 }
 			}
 		}
@@ -2428,7 +2444,8 @@ namespace FastReport.DataVisualization.Charting
 				value.chartElement = this;
 				_smartLabelStyle = value;
 				this.Invalidate(false, false);
-			}
+                CallOnModifing();
+            }
 		}
 
 

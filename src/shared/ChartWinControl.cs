@@ -917,10 +917,18 @@ After:
 		}
 
 
-#endregion
+        #endregion
 
-		#region Control public properties
+        #region Control public properties
 
+
+        public event EventHandler OnModifing;
+
+        public void CallOnModifing(object sender)
+        {
+            OnModifing?.Invoke(sender, null);
+        }
+ 
 		/// <summary>
 		/// Array of custom palette colors.
 		/// </summary>

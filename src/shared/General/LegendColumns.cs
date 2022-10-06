@@ -166,6 +166,7 @@ namespace FastReport.DataVisualization.Charting
             this._columnType = columnType;
             this._text = text;
             this._alignment = alignment;
+            this._margins.Element = this;
         }
 
 
@@ -189,6 +190,7 @@ namespace FastReport.DataVisualization.Charting
             set
             {
                 base.Name = value;
+                CallOnModifing();
             }
         }
 
@@ -232,6 +234,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._columnType = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -257,6 +260,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._text = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -282,6 +286,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._foreColor = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -307,6 +312,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._backColor = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -329,6 +335,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._font = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -355,6 +362,7 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._seriesSymbolSize = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -377,6 +385,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._alignment = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -402,6 +411,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._margins = value;
                 this.Invalidate();
+                CallOnModifing();
 
                 // Set common elements of the new margins class
                 if (this.Legend != null)
@@ -443,6 +453,8 @@ namespace FastReport.DataVisualization.Charting
             set
             {
                 this._toolTip = value;
+                CallOnModifing();
+
                 if (Chart != null &&
                    Chart.selection != null)
                 {
@@ -473,6 +485,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._headerText = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -498,6 +511,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._headerForeColor = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -523,6 +537,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._headerBackColor = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -544,6 +559,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._headerFont = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -567,6 +583,7 @@ namespace FastReport.DataVisualization.Charting
                 {
                     this._headerAlignment = value;
                     this.Invalidate();
+                    CallOnModifing();
                 }
             }
         }
@@ -595,6 +612,7 @@ namespace FastReport.DataVisualization.Charting
 
                 this._minimumCellWidth = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -621,6 +639,7 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._maximumCellWidth = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -642,6 +661,7 @@ namespace FastReport.DataVisualization.Charting
             newCell.SeriesSymbolSize = this.SeriesSymbolSize;
             newCell.Alignment = this.Alignment;
             newCell.Margins = new Margins(this.Margins.Top, this.Margins.Bottom, this.Margins.Left, this.Margins.Right);
+            newCell.Margins.Element = this;
             return newCell;
         }
 
@@ -808,6 +828,7 @@ namespace FastReport.DataVisualization.Charting
 #endregion // Constructors
 
 #region Properties
+        
 
         /// <summary>
         /// Gets or sets the name of the legend cell.
@@ -825,6 +846,7 @@ namespace FastReport.DataVisualization.Charting
             set
             {
                 base.Name = value;
+                CallOnModifing();
             }
         }
 
@@ -847,6 +869,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._cellType = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -889,7 +912,17 @@ namespace FastReport.DataVisualization.Charting
             }
         }
 
-
+        internal override IChartElement Parent
+        {
+            get { return base.Parent; }
+            set 
+            { 
+                base.Parent = value;
+                
+                if (_margins != null) 
+                    _margins.Element = this; 
+            }
+        }
 
         /// <summary>
         /// Gets or sets the text of the legend cell. Set CellType to text to use this property.
@@ -909,6 +942,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._text = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -934,6 +968,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._foreColor = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -959,6 +994,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._backColor = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -980,6 +1016,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._font = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -1004,6 +1041,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._image = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -1029,6 +1067,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._imageTransparentColor = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -1059,6 +1098,7 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._imageSize = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -1085,6 +1125,7 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._seriesSymbolSize = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -1106,6 +1147,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._alignment = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -1131,6 +1173,7 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._cellSpan = value;
                 this.Invalidate();
+                CallOnModifing();
             }
         }
 
@@ -1154,6 +1197,7 @@ namespace FastReport.DataVisualization.Charting
             {
                 this._margins = value;
                 this.Invalidate();
+                CallOnModifing();
 
                 // Set common elements of the new margins class
                 if (this.Legend != null)
@@ -1192,6 +1236,8 @@ namespace FastReport.DataVisualization.Charting
             set
             {
                 this._toolTip = value;
+                CallOnModifing();
+
                 if (this.Chart != null &&
                    this.Chart.selection != null)
                 {
@@ -2286,6 +2332,8 @@ namespace FastReport.DataVisualization.Charting
         // chart when one of the properties is changed.
         internal CommonElements Common = null;
 
+        internal ChartElement Element;
+
 #endregion // Fields
 
 #region Constructor
@@ -2295,6 +2343,7 @@ namespace FastReport.DataVisualization.Charting
         /// </summary>
         public Margins()
         {
+            Element = null;
         }
 
         /// <summary>
@@ -2310,6 +2359,7 @@ namespace FastReport.DataVisualization.Charting
             this._bottom = bottom;
             this._left = left;
             this._right = right;
+            Element = null;
         }
 
 #endregion // Constructor
@@ -2340,6 +2390,9 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._top = value;
                 this.Invalidate();
+
+                if (Element != null)
+                    Element.CallOnModifing();
             }
         }
 
@@ -2367,6 +2420,9 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._bottom = value;
                 this.Invalidate();
+
+                if (Element != null)
+                    Element.CallOnModifing();
             }
         }
 
@@ -2394,6 +2450,9 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._left = value;
                 this.Invalidate();
+
+                if (Element != null)
+                    Element.CallOnModifing();
             }
         }
 
@@ -2421,6 +2480,9 @@ namespace FastReport.DataVisualization.Charting
                 }
                 this._right = value;
                 this.Invalidate();
+
+                if (Element != null)
+                    Element.CallOnModifing();
             }
         }
 

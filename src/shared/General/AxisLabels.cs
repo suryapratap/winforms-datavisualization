@@ -55,7 +55,7 @@ namespace FastReport.DataVisualization.Charting
 				labelStyle = value;
 				labelStyle.Axis = (Axis)this;
 				this.Invalidate();
-			}
+            }
 		}
 
 		/// <summary>

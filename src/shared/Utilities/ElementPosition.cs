@@ -304,6 +304,7 @@ namespace FastReport.DataVisualization.Charting
 				}
 
 				this.Invalidate();
+                CallOnModifing();
 			}
 		}
 
@@ -341,7 +342,8 @@ namespace FastReport.DataVisualization.Charting
 				}
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -377,7 +379,8 @@ namespace FastReport.DataVisualization.Charting
 				}
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
 		/// <summary>
@@ -414,7 +417,8 @@ namespace FastReport.DataVisualization.Charting
 				}
 
 				this.Invalidate();
-			}
+                CallOnModifing();
+            }
 		}
 
         /// <summary>
@@ -450,7 +454,8 @@ namespace FastReport.DataVisualization.Charting
 					_auto = value;
 
 					this.Invalidate();
-				}
+                    CallOnModifing();
+                }
 			}
 		}
 

@@ -23,4 +23,6 @@ namespace FastReport.DataVisualization.Charting
             return SR.Keys.GetString(value);
         }
     }
+
+
 }
