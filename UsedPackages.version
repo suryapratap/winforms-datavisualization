@@ -3,9 +3,9 @@
 <!-- This group sets version used packages in FastReport.Compat and package -->
     <PropertyGroup>
 
-        <FRCompatVersion>2022.3.2</FRCompatVersion>
+        <FRCompatVersion>2023.1.0</FRCompatVersion>
 		
-        <FRCompatSkiaVersion>2022.3.2</FRCompatSkiaVersion>
+        <FRCompatSkiaVersion>2023.1.0</FRCompatSkiaVersion>
 
     </PropertyGroup>
 	
