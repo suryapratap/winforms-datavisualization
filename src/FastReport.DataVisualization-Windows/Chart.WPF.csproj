@@ -14,7 +14,6 @@
 
   <PropertyGroup Condition="'$(Configuration)' == 'Demo'">
     <DefineConstants>$(DefineConstants);Demo</DefineConstants>
-    <PackageId>FastReport.DataVisualization.WPF.Demo</PackageId>
   </PropertyGroup>
 
   <Import Project="$(SlnDir)\UsedPackages.version"/>
@@ -23,7 +22,7 @@
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(Configuration)' != 'Demo'">
+  <ItemGroup>
     <PackageReference Include="FastReport.Compat.WPF" Version="$(FRCompatVersion)" Condition="!$(DebugFRCompat)"/>
     <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat-Windows\FastReport.Compat.WPF.csproj" Condition="$(DebugFRCompat)" />
 
@@ -33,13 +32,6 @@
     <ProjectReference Include="..\..\..\FastReport.Forms.WPF\src\FastReport.Forms.WPF.csproj" Condition="$(DebugFRForms)">
       <PrivateAssets>compile</PrivateAssets>
     </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(Configuration)' == 'Demo'">
-    <PackageReference Include="FastReport.Compat.WPF.Demo" Version="$(FRCompatVersion)"/>
-    <PackageReference Include="FastReport.Forms.WPF.Demo" Version="$(FRFormsWPFVersion)">
-      <PrivateAssets>compile</PrivateAssets>
-    </PackageReference>
   </ItemGroup>
 
 </Project>
