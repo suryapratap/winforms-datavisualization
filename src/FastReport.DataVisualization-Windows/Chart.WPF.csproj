@@ -27,18 +27,18 @@
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="!$(UseFRSources)">
-    <PackageReference Include="$(FastReportFormsWPF)" Version="$(FRFormsWPFVersion)">
-      <PrivateAssets>compile</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="$(FastReportCompatWPF)" Version="$(FRCompatVersion)"/>
-  </ItemGroup>
-
   <ItemGroup Condition="$(UseFRSources)">
     <ProjectReference Include="..\..\..\FastReport.Forms.WPF\src\FastReport.Forms.WPF.csproj">
       <PrivateAssets>compile</PrivateAssets>
     </ProjectReference>
     <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat-Windows\FastReport.Compat.WPF.csproj"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="!$(UseFRSources)">
+    <PackageReference Include="$(FastReportFormsWPF)" Version="$(FRFormsWPFVersion)">
+      <PrivateAssets>compile</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="$(FastReportCompatWPF)" Version="$(FRCompatVersion)"/>
   </ItemGroup>
 
 </Project>
