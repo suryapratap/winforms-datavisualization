@@ -8,12 +8,12 @@
     <PackageId>FastReport.DataVisualization.WPF</PackageId>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     
-    <DebugFRForms>true</DebugFRForms>
-    <DebugFRCompat>true</DebugFRCompat>
+    <UseFRSources>true</UseFRSources>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Demo'">
     <DefineConstants>$(DefineConstants);Demo</DefineConstants>
+    <PackageId>FastReport.DataVisualization.WPF.Demo</PackageId>
   </PropertyGroup>
 
   <Import Project="$(SlnDir)\UsedPackages.version"/>
@@ -22,16 +22,23 @@
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FastReport.Compat.WPF" Version="$(FRCompatVersion)" Condition="!$(DebugFRCompat)"/>
-    <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat-Windows\FastReport.Compat.WPF.csproj" Condition="$(DebugFRCompat)" />
-
-    <PackageReference Include="FastReport.Forms.WPF" Version="$(FRFormsWPFVersion)" Condition="!$(DebugFRForms)">
+  <ItemGroup Condition="!$(UseFRSources)">
+    <PackageReference Include="FastReport.Forms.WPF" Version="$(FRFormsWPFVersion)" Condition="'$(Configuration)' != 'Demo'">
       <PrivateAssets>compile</PrivateAssets>
     </PackageReference>
-    <ProjectReference Include="..\..\..\FastReport.Forms.WPF\src\FastReport.Forms.WPF.csproj" Condition="$(DebugFRForms)">
+    <PackageReference Include="FastReport.Forms.WPF.Demo" Version="$(FRFormsWPFVersion)" Condition="'$(Configuration)' == 'Demo'">
+      <PrivateAssets>compile</PrivateAssets>
+    </PackageReference>
+
+    <PackageReference Include="FastReport.Compat.WPF" Version="$(FRCompatVersion)" Condition="'$(Configuration)' != 'Demo'"/>
+    <PackageReference Include="FastReport.Compat.WPF.Demo" Version="$(FRCompatVersion)" Condition="'$(Configuration)' == 'Demo'"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="$(UseFRSources)">
+    <ProjectReference Include="..\..\..\FastReport.Forms.WPF\src\FastReport.Forms.WPF.csproj">
       <PrivateAssets>compile</PrivateAssets>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat-Windows\FastReport.Compat.WPF.csproj"/>
   </ItemGroup>
 
 </Project>
