@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
+    <UseWindowsForms>false</UseWindowsForms>
+    <DefineConstants>$(DefineConstants);NETCOREWIN</DefineConstants>
+    <AssemblyName>FastReport.DataVisualization</AssemblyName>
+    <PackageId>FastReport.DataVisualization.WPF</PackageId>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    
+    <FastReportFormsWPF>FastReport.Forms.WPF</FastReportFormsWPF>
+    <FastReportCompatWPF>FastReport.Compat.WPF</FastReportCompatWPF>
+
+    <UseFRSources>true</UseFRSources>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Demo'">
+    <DefineConstants>$(DefineConstants);Demo</DefineConstants>
+    <PackageId>FastReport.DataVisualization.WPF.Demo</PackageId>
+    <FastReportFormsWPF>FastReport.Forms.WPF.Demo</FastReportFormsWPF>
+    <FastReportCompatWPF>FastReport.Compat.WPF.Demo</FastReportCompatWPF>
+  </PropertyGroup>
+
+  <Import Project="$(SlnDir)\UsedPackages.version"/>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'net462'">
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(UseFRSources)">
+    <ProjectReference Include="..\..\..\FastReport.Forms.WPF\src\FastReport.Forms.WPF.csproj">
+      <PrivateAssets>compile</PrivateAssets>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat-Windows\FastReport.Compat.WPF.csproj"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="!$(UseFRSources)">
+    <PackageReference Include="$(FastReportFormsWPF)" Version="$(FRFormsWPFVersion)">
+      <PrivateAssets>compile</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="$(FastReportCompatWPF)" Version="$(FRCompatVersion)"/>
+  </ItemGroup>
+
+</Project>

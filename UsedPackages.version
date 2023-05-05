@@ -5,6 +5,8 @@
 
         <FRCompatVersion>2023.1.0</FRCompatVersion>
 		
+        <FRFormsWPFVersion>2023.1.0</FRFormsWPFVersion>
+
         <FRCompatSkiaVersion>2023.1.0</FRCompatSkiaVersion>
 
     </PropertyGroup>
