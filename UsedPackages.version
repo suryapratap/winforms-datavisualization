@@ -7,6 +7,8 @@
 		
         <FRCompatSkiaVersion>2023.2.0</FRCompatSkiaVersion>
 
+        <FRFormsWPFVersion>2023.1.0</FRFormsWPFVersion>
+
     </PropertyGroup>
 	
 </Project>
