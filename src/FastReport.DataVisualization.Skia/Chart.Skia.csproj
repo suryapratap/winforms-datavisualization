@@ -8,15 +8,27 @@
     <DefineConstants>$(DefineConstants);SKIA;</DefineConstants>
 
     <DebugFRCompat>false</DebugFRCompat>
+
+    <Configurations>Debug;Release;Demo</Configurations>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)'=='Demo'">
+    <PackageId>$(PackageId).Demo</PackageId>
+  </PropertyGroup>
+
+
   <Import Project="$(SlnDir)\UsedPackages.version"/>
-  <ItemGroup>
+  <ItemGroup Condition="!$(DebugFRCompat)">
     <PackageReference Include="FastReport.Compat.Skia"
                       Version="$(FRCompatSkiaVersion)"
-                      Condition="!$(DebugFRCompat)" />
-    <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat\FastReport.Compat.Skia.csproj"
-                      Condition="$(DebugFRCompat)"/>
+                      Condition="$(Configuration) != 'Demo'" />
+    <PackageReference Include="FastReport.Compat.Skia.Demo"
+                      Version="$(FRCompatSkiaVersion)"
+                      Condition="$(Configuration) == 'Demo'" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(DebugFRCompat)">
+    <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat.Skia\FastReport.Compat.Skia.csproj" />
   </ItemGroup>
 
 </Project>

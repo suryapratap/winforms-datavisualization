@@ -10,7 +10,7 @@
     <CLSCompliant>false</CLSCompliant>
     <NoWarn>$(NoWarn);618</NoWarn>
     <DefineConstants>$(DefineConstants);WINFORMS_CONTROL</DefineConstants>
-    <Copyright>Copyright © Fast Reports Inc 2022</Copyright>
+    <Copyright>Copyright © Fast Reports Inc 2023</Copyright>
     <Product>FastReport.Net</Product>
     <Company>Fast Reports Inc.</Company>
     <Description>Charting library</Description>
@@ -27,11 +27,12 @@
     <SourceCode>$(MSBuildThisFileDirectory)shared</SourceCode>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="'$(Configuration)'!='Debug'">
     <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
     <DebugSymbols>false</DebugSymbols>
     <BuildProjectReferences>false</BuildProjectReferences>
-	<GenerateDependencyFile>false</GenerateDependencyFile>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
   </PropertyGroup>
 
   <ItemGroup>
