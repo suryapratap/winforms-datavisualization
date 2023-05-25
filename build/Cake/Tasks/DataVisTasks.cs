@@ -15,7 +15,6 @@ namespace CakeScript;
 
 partial class Program
 {
-    [Debug("--solution-filename=DataViz.sln --config=Debug --vers=2022.2.0-dev")]
     [DependsOn(nameof(PrepareNuget))]
     public void PackDataVis()
     {
