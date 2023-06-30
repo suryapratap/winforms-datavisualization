@@ -11,7 +11,10 @@
     <FastReportFormsWPF>FastReport.Forms.WPF</FastReportFormsWPF>
     <FastReportCompatWPF>FastReport.Compat.WPF</FastReportCompatWPF>
 
-    <UseFRSources>true</UseFRSources>
+    <FastReportFormsWPFProj>..\..\..\FastReport.Forms.WPF\src\FastReport.Forms.WPF.csproj</FastReportFormsWPFProj>
+    <FastReportCompatWPFProj>..\..\..\FastReport.Compat\src\FastReport.Compat-Windows\FastReport.Compat.WPF.csproj</FastReportCompatWPFProj>
+    <UseFRSources>false</UseFRSources>
+    <UseFRSources Condition="Exists('$(FastReportFormsWPFProj)') and Exists('$(FastReportCompatWPFProj)')">true</UseFRSources>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Demo'">
@@ -28,10 +31,10 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(UseFRSources)">
-    <ProjectReference Include="..\..\..\FastReport.Forms.WPF\src\FastReport.Forms.WPF.csproj">
+    <ProjectReference Include="$(FastReportFormsWPFProj)">
       <PrivateAssets>compile</PrivateAssets>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\FastReport.Compat\src\FastReport.Compat-Windows\FastReport.Compat.WPF.csproj"/>
+    <ProjectReference Include="$(FastReportCompatWPFProj)"/>
   </ItemGroup>
 
   <ItemGroup Condition="!$(UseFRSources)">
