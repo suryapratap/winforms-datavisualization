@@ -3,11 +3,11 @@
 <!-- This group sets version used packages in FastReport.Compat and package -->
     <PropertyGroup>
 
-        <FRCompatVersion Condition="$(FRCompatVersion) == ''">2023.1.8</FRCompatVersion>
+        <FRCompatVersion Condition="$(FRCompatVersion) == ''">2023.3.0</FRCompatVersion>
 		
-        <FRCompatSkiaVersion Condition="$(FRCompatSkiaVersion) == ''">2023.2.0</FRCompatSkiaVersion>
+        <FRCompatSkiaVersion Condition="$(FRCompatSkiaVersion) == ''">2023.3.0</FRCompatSkiaVersion>
 
-        <FRFormsWPFVersion Condition="$(FRFormsWPFVersion) == ''">2023.1.0</FRFormsWPFVersion>
+        <FRFormsWPFVersion Condition="$(FRFormsWPFVersion) == ''">2023.2.1</FRFormsWPFVersion>
 
     </PropertyGroup>
 	
