@@ -1,3 +1,7 @@
+# Warning
+
+As a part of our intergration process, we have moved contents of this repository to internal FastReport.Net repository. New versions of the NuGet package will still be deployed to nuget.org.
+
 # Data Visualization
 
 This repository contains partial source code of the `System.Windows.Forms.DataVisualization` namespace that provides charting for WinForms. We ported and open sourced those components to enable charting features for WinForms applications that are developed on .NET Core 3.
